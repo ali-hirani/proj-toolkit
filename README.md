@@ -18,7 +18,7 @@ pulls from cloud repo to local repo
 
 **git reset --hard**
 
-###How to push allchanges to cloud repo
+####How to push all changes to cloud repo
 
 1. **git add -A**
 Add to index all files
@@ -32,7 +32,8 @@ pushes changes to cloud repo
 
 Extra Notes:
 
-Does the 2 below operations at once, 
+#####"git add -A" does the 2 operations below:
+
 1. **git add .**
 add to index only files created/modified and not those deleted
 
