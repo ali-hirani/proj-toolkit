@@ -23,14 +23,19 @@ pulls from cloud repo to local repo
 
 1. **git add -A**
 ..* Add to index all files
-Does the 2 below operations at once, 
-..*	**git add .**
-..* add to index only files created/modified and not those deleted
-..* **git add -u**
-..* add to index only files deleted/modified and not those created
 
 2. **git commit -m "message"**
 ..* stamps a commit in the repo log
 
 3. **git push**
 ..* pushes changes to cloud repo
+
+
+Extra Notes:
+
+Does the 2 below operations at once, 
+1. **git add .**
+..* add to index only files created/modified and not those deleted
+
+2. **git add -u**
+..* add to index only files deleted/modified and not those created
