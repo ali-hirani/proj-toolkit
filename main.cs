@@ -1,5 +1,12 @@
 using System;
 
+//class Statistics
+//{
+//    public double Sum()
+//    {
+//
+//    }
+//}
 class UserInterface
 {
     public void EmptyMethod(string toolName)
@@ -9,7 +16,6 @@ class UserInterface
         Console.WriteLine("You chose {0}", toolName);
         Console.WriteLine("");
         Console.WriteLine("{0} not implemented", toolName);
-        Console.WriteLine("");
         Console.WriteLine("");
         Console.WriteLine("------------------------------------");
         Console.WriteLine("Press any key to return to main menu");
