@@ -8,12 +8,14 @@ class Statistic
     public void Sum()
     //yields the sum of a set of user inputted number
     {
+        Console.WriteLine("This tool calculates the sum of numbers inputted.");
         do
         {
             temp = Console.ReadLine();
             if(double.TryParse(temp, out num))
             //checks if the string 'temp' parses as a double
             {
+
                 sum += num;
                 //if it does add it to sum
             }
@@ -21,6 +23,7 @@ class Statistic
             {
                 Console.WriteLine("");
                 Console.Write("The Sum of the Inputted Values is: ");
+                sum = 0; 
             }
             else
             {
