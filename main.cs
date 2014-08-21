@@ -77,13 +77,17 @@ class TipCalculator
             }
         }
         while(tipValue == 0);
+        //exits loop if the the entered value is a numerical value
     }
 }
 class Statistic
 {
     public double sum;
+    //holds total sum of numerical values inputted
     public double sumNum;
+    //contains the value read in
     public string sumParse;
+    //string for ReadLine() for TryParse
     public void Sum()
     //yields the sum of a set of user inputted number
     {
@@ -154,14 +158,18 @@ class Program
         TipCalculator tc = new TipCalculator();
         Statistic stat = new Statistic();
 
-        ConsoleKeyInfo info;
+        DateTime now = DateTime.Now;
+
+        ConsoleKeyInfo uiKey;
         bool keyCheck = false;
         bool terminate = false;
         string tool1 = "Tip Calculator";
         string tool2 = "Quadratic Formula";
         string tool3 = "Mean/Mode/Median Tool";
-        string tool4 = "Sum";
+        string tool4 = "Sum Tool";
+        
         while(terminate == false)
+        //terminate's value only changes in the else if condition where 't' is pressed
         {
             do
             {
@@ -173,39 +181,45 @@ class Program
                 Console.WriteLine("2. {0}", tool2);
                 Console.WriteLine("3. {0}", tool3);
                 Console.WriteLine("4. {0}", tool4);
-                Console.WriteLine("Press t to Terminate Program");
                 Console.WriteLine("--------------------------------");
+                //Console.WriteLine("");
+                Console.WriteLine("Press t to Terminate Program");
+                //Console.WriteLine("");
+                Console.WriteLine("------------------------------------------------");
+                Console.WriteLine("Session Start Date/Time: " + now);
+                Console.WriteLine("------------------------------------------------");
                 Console.WriteLine("");
-                info = Console.ReadKey();
-                if(info.KeyChar == '1')
+                uiKey = Console.ReadKey();
+                if(uiKey.KeyChar == '1')
                 {
                     ui.ToolStart(tool1);
                     tc.TipCalc();
                     ui.ToolEnd();
                 }
-                else if(info.KeyChar == '2')
+                else if(uiKey.KeyChar == '2')
                 {
                     ui.EmptyMethod(tool2);
                     keyCheck = true;
                 }
-                else if(info.KeyChar == '3')
+                else if(uiKey.KeyChar == '3')
                 {
                     ui.EmptyMethod(tool3);
                     keyCheck = true;
                 }
-                else if(info.KeyChar == '4')
+                else if(uiKey.KeyChar == '4')
                 {
                     ui.ToolStart(tool4);
                     stat.Sum();
                     ui.ToolEnd();
                 }
-                else if(info.KeyChar == 't')
+                else if(uiKey.KeyChar == 't')
                 {
                     Console.WriteLine("---Accepted");
                     Console.WriteLine("");
                     Console.WriteLine("You chose to exit");
                     keyCheck = true;
                     terminate = true;
+                    //terminate is only true if t is pressed, the while loop is exited
                 }
                 else
                 {
