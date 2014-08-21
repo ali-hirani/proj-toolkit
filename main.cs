@@ -1,39 +1,119 @@
 using System;
 
-class Statistic
+class TipCalculator
 {
-    public double sum;
-    public double num;
-    public string temp;
-    public void Sum()
-    //yields the sum of a set of user inputted number
+    public double billTotal;
+    //billValue
+    public double billNum;
+    //pre-tax bill value
+    public string billParse;
+    public double tipRate = -1;
+    public double tipValue = 0;
+    ConsoleKeyInfo serviceKey;
+    public void TipCalc()
     {
-        Console.WriteLine("This tool calculates the sum of numbers inputted.");
+        Console.WriteLine("This tool calculates the Tip based on quality of service.");
+        Console.WriteLine("How was the service today?");
+        Console.WriteLine("1. Excellent!");
+        //20% tip
+        Console.WriteLine("2. Good");
+        //15% tip
+        Console.WriteLine("3. Okay");
+        //10% tip
+        Console.WriteLine("4. Poor");
+        //0% tip
+        Console.WriteLine("");
         do
         {
-            temp = Console.ReadLine();
-            if(double.TryParse(temp, out num))
-            //checks if the string 'temp' parses as a double
+            serviceKey = Console.ReadKey();
+            if(serviceKey.KeyChar == '1')
             {
-
-                sum += num;
-                //if it does add it to sum
+                tipRate = 0.2;
             }
-            else if(temp == "end")
+            else if(serviceKey.KeyChar == '2')
             {
+                tipRate = 0.15;
+            }
+            else if(serviceKey.KeyChar == '3')
+            {
+                tipRate = 0.1;
+            }
+            else if(serviceKey.KeyChar == '4')
+            {
+                tipRate = 0;
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("---Not Accepted");
+                Console.WriteLine();
+                Console.WriteLine("Choose from options 1 to 4.");
+                Console.ReadKey();
+            }
+        }
+        while(tipRate < 0);
+        //if its set to any of the 4 rates it will exit the loop
+        Console.WriteLine("---Accepted");
+        Console.WriteLine("");
+        Console.WriteLine("Enter Pre-tax Bill Value.");
+        do
+        {
+            Console.WriteLine("");
+            billParse = Console.ReadLine();
+            if(double.TryParse(billParse, out billNum))
+            {
+                tipValue = billNum * tipRate;
+                //tip is evaluated on pretax value
+                billTotal = (tipValue + billNum * 1.13);
+                //total = tip + bill pretax + tax
                 Console.WriteLine("");
-                Console.Write("The Sum of the Inputted Values is: ");
-                sum = 0; 
+                Console.WriteLine("You should tip: ${0:f2}", tipValue);
+                Console.WriteLine("Your total comes to: ${0:f2}", billTotal);
             }
             else
             {
                 Console.WriteLine("Please input valid number.");
-                //if it does not request valid input
+                //if it does not parse as a dobule, request valid input
             }
         }
-        while(temp != "end");
+        while(tipValue == 0);
+    }
+}
+class Statistic
+{
+    public double sum;
+    public double sumNum;
+    public string sumParse;
+    public void Sum()
+    //yields the sum of a set of user inputted number
+    {
+        Console.WriteLine("This tool calculates the sum of numbers inputted. Enter each value individually and type end to terminate input.");
+        do
+        {
+            sumParse = Console.ReadLine();
+            if(double.TryParse(sumParse, out sumNum))
+            //checks if the string sumParse parses as a double
+            {
+
+                sum += sumNum;
+                //if it does parse as double, output to sumNum which is then added to sum
+            }
+            else if(sumParse == "end")
+            {
+                Console.WriteLine("");
+                Console.Write("The Sum of the Inputted Values is: ");
+            }
+            else
+            {
+                Console.WriteLine("Please input valid number.");
+                //if it does not parse as a dobule, request valid input
+            }
+        }
+        while(sumParse != "end");
         //user must type end to terminate the program
         Console.Write(sum);
+        sum = 0;
+        //resets value so that if the sum function is used again in the same function it wont be additive
     }
 }
 class UserInterface
@@ -71,6 +151,7 @@ class Program
     static void Main()
     {
         UserInterface ui = new UserInterface();
+        TipCalculator tc = new TipCalculator();
         Statistic stat = new Statistic();
 
         ConsoleKeyInfo info;
@@ -98,8 +179,9 @@ class Program
                 info = Console.ReadKey();
                 if(info.KeyChar == '1')
                 {
-                    ui.EmptyMethod(tool1);
-                    keyCheck = true;
+                    ui.ToolStart(tool1);
+                    tc.TipCalc();
+                    ui.ToolEnd();
                 }
                 else if(info.KeyChar == '2')
                 {
