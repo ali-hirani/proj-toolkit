@@ -22,7 +22,8 @@ class TipCalculator
         //10% tip
         Console.WriteLine("4. Poor");
         //0% tip
-        Console.WriteLine("");
+        Console.WriteLine("5. Custom");
+        //Custom tip amount
         do
         {
             serviceKey = Console.ReadKey();
@@ -42,12 +43,18 @@ class TipCalculator
             {
                 tipRate = 0;
             }
+            else if(serviceKey.KeyChar == '5')
+            {   
+                Console.WriteLine("Please enter a custom tip amount in percent.");
+                tipRate = (Double.Parse(Console.ReadLine()))/100;
+
+            }
             else
             {
                 Console.WriteLine();
                 Console.WriteLine("---Not Accepted");
                 Console.WriteLine();
-                Console.WriteLine("Choose from options 1 to 4.");
+                Console.WriteLine("Choose from options 1 to 5.");
                 Console.ReadKey();
             }
         }
