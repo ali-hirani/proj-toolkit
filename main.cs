@@ -9,11 +9,13 @@ class TipCalculator
     public string billParse;
     public double tipRate = -1;
     public double tipValue = 0;
+    public double custTipRate = -1;
     ConsoleKeyInfo serviceKey;
     public void TipCalc()
     {
         Console.WriteLine("This tool calculates the Tip based on quality of service.");
         Console.WriteLine("How was the service today?");
+        Console.WriteLine("");
         Console.WriteLine("1. Excellent!");
         //20% tip
         Console.WriteLine("2. Good");
@@ -24,6 +26,7 @@ class TipCalculator
         //0% tip
         Console.WriteLine("5. Custom");
         //Custom tip amount
+        Console.WriteLine("");
         do
         {
             serviceKey = Console.ReadKey();
@@ -45,37 +48,59 @@ class TipCalculator
             }
             else if(serviceKey.KeyChar == '5')
             {   
+                Console.WriteLine("---Accepted");
                 Console.WriteLine("Please enter a custom tip amount in percent.");
-                tipRate = (Double.Parse(Console.ReadLine()))/100;
+                Console.WriteLine();
+                custTipRate = (Double.Parse(Console.ReadLine()))/100;
 
             }
             else
             {
-                Console.WriteLine();
                 Console.WriteLine("---Not Accepted");
                 Console.WriteLine();
                 Console.WriteLine("Choose from options 1 to 5.");
-                Console.ReadKey();
+                Console.WriteLine();
             }
         }
-        while(tipRate < 0);
-        //if its set to any of the 4 rates it will exit the loop
-        Console.WriteLine("---Accepted");
-        Console.WriteLine("");
-        Console.WriteLine("Enter Pre-tax Bill Value.");
+        while(tipRate < 0 && custTipRate < 0);
+        //if its set to any of the 5 rates it will exit the loop
+        if(tipRate > 0)
+        {
+            Console.WriteLine("---Accepted");
+            Console.WriteLine("");
+        }
+        else if(custTipRate > 0)
+        {
+            Console.WriteLine("");
+        }
+        
+        Console.WriteLine("Enter Pre-tax Bill Value.");    
         do
         {
             Console.WriteLine("");
             billParse = Console.ReadLine();
             if(double.TryParse(billParse, out billNum))
             {
-                tipValue = billNum * tipRate;
-                //tip is evaluated on pretax value
-                billTotal = (tipValue + billNum * 1.13);
-                //total = tip + bill pretax + tax
-                Console.WriteLine("");
-                Console.WriteLine("You should tip: ${0:f2}", tipValue);
-                Console.WriteLine("Your total comes to: ${0:f2}", billTotal);
+                if(tipRate > 0)
+                {
+                    tipValue = billNum * tipRate;
+                    //tip is evaluated on pretax value
+                    billTotal = (tipValue + billNum * 1.13);
+                    //total = tip + bill pretax + tax
+                    Console.WriteLine("");
+                    Console.WriteLine("You should tip: ${0:f2}", tipValue);
+                    Console.WriteLine("Your total comes to: ${0:f2}", billTotal);
+                }
+                if(custTipRate > 0)
+                {
+                    tipValue = billNum * custTipRate;
+                    //tip is evaluated on pretax value
+                    billTotal = (tipValue + billNum * 1.13);
+                    //total = tip + bill pretax + tax
+                    Console.WriteLine("");
+                    Console.WriteLine("You should tip: ${0:f2}", tipValue);
+                    Console.WriteLine("Your total comes to: ${0:f2}", billTotal);
+                }
             }
             else
             {
