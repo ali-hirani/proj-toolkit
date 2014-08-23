@@ -681,6 +681,7 @@ class Element
 }
 class UserInterface
 {
+
     public void EmptyMethod(string toolName)
     {
         Console.WriteLine("---Accepted");
@@ -708,6 +709,54 @@ class UserInterface
         Console.ReadKey();
     }
 }
+
+class Qformula
+{
+//(b^2) - 4ac < 0 then it can't do anything
+	public double a = 0;
+	public double b= 0;
+	public double c= 0;
+	public double test= 0;
+	public double result1= 0; 
+	public double result2= 0;
+	
+	
+	public void Quadformula()
+	{
+		Console.WriteLine("Welcome to the Quadratic Calculator.");
+		do
+		{
+		Console.WriteLine("Please enter the A value.");
+		a = Double.Parse(Console.ReadLine());
+		Console.WriteLine("Please enter the B value.");
+		b = Double.Parse(Console.ReadLine());
+		Console.WriteLine("Please enter the C value.");
+		c = Double.Parse(Console.ReadLine());
+		
+		test = (b * b) - (4*(a * c));
+		
+		if (test < 0)
+		{
+		Console.WriteLine("Value is not real.");
+		Console.WriteLine("");
+		}
+		Console.WriteLine("");
+		}
+		while (test < 0);
+		
+			result1 = (-b + Math.Sqrt((b*b) - (4*(a * c))))/ (2*(a));
+			result2 =(-b - Math.Sqrt((b*b) - (4*(a * c))))/ (2*(a));
+			
+			
+			Console.WriteLine("x1 = " + Math.Round(result1,3));
+			Console.WriteLine("x2 = " + Math.Round(result2,3));
+		
+		
+	}
+		
+	
+	}
+
 class Program
 {
     static void Main()
@@ -715,6 +764,7 @@ class Program
         UserInterface ui = new UserInterface();
         TipCalculator tc = new TipCalculator();
         Statistic stat = new Statistic();
+		Qformula qf = new Qformula();
 
         DateTime now = DateTime.Now;
 
@@ -758,8 +808,9 @@ class Program
                 }
                 else if(uiKey.KeyChar == '2')
                 {
-                    ui.EmptyMethod(tool2);
-                    keyCheck = true;
+                    ui.ToolStart(tool2);
+					qf.Quadformula();
+                    ui.ToolEnd();
                 }
                 else if(uiKey.KeyChar == '3')
                 {
