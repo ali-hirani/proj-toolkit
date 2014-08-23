@@ -679,6 +679,55 @@ class Element
         return mMass;
     }
 }
+class Qformula
+{
+//(b^2) - 4ac < 0 then it can't do anything
+    public double a = 0;
+    public double b= 0;
+    public double c= 0;
+    public double test= 0;
+    public double result1= 0; 
+    public double result2= 0;
+	
+	public void Quadformula()
+	{
+        Console.WriteLine("Welcome to the Quadratic Calculator.");
+
+        do
+        {
+            Console.WriteLine("Please enter the A value.");
+            a = Double.Parse(Console.ReadLine());
+        	Console.WriteLine("Please enter the B value.");
+        	b  = Double.Parse(Console.ReadLine());
+        	Console.WriteLine("Please enter the C value.");
+        	c = Double.Parse(Console.ReadLine());
+            test = (b * b) - (4*(a * c));
+            if(test < 0)
+            {
+                Console.WriteLine("Value is not real.");
+                Console.WriteLine("");
+            }
+            Console.WriteLine("");
+        }
+		while (test < 0);
+		result1 = (-b + Math.Sqrt((b * b) - (4 * (a * c)))) / (2 * (a));
+		result2 =(-b - Math.Sqrt((b * b) - (4 * (a * c)))) / (2 * (a));
+			
+		Console.WriteLine("x1 = " + Math.Round(result1, 3));
+		Console.WriteLine("x2 = " + Math.Round(result2, 3));	
+	}		
+}
+class RandomNumberGen
+{
+    public int rn = 0;
+    public void Rando(int Rmin, int Rmax)
+    {
+       Random rn = new Random();
+       Console.WriteLine("Your Randomly Generated Number Within the Bounds is: " + rn.Next(Rmin, Rmax + 1)); 
+       //Rmax + 1 makes it inclusive of the user's inputs
+       //Therefore Rmin = 5, Rmax = 6 can yield 5 or 6
+    }
+}
 class UserInterface
 {
 
@@ -709,54 +758,6 @@ class UserInterface
         Console.ReadKey();
     }
 }
-
-class Qformula
-{
-//(b^2) - 4ac < 0 then it can't do anything
-	public double a = 0;
-	public double b= 0;
-	public double c= 0;
-	public double test= 0;
-	public double result1= 0; 
-	public double result2= 0;
-	
-	
-	public void Quadformula()
-	{
-		Console.WriteLine("Welcome to the Quadratic Calculator.");
-		do
-		{
-		Console.WriteLine("Please enter the A value.");
-		a = Double.Parse(Console.ReadLine());
-		Console.WriteLine("Please enter the B value.");
-		b = Double.Parse(Console.ReadLine());
-		Console.WriteLine("Please enter the C value.");
-		c = Double.Parse(Console.ReadLine());
-		
-		test = (b * b) - (4*(a * c));
-		
-		if (test < 0)
-		{
-		Console.WriteLine("Value is not real.");
-		Console.WriteLine("");
-		}
-		Console.WriteLine("");
-		}
-		while (test < 0);
-		
-			result1 = (-b + Math.Sqrt((b*b) - (4*(a * c))))/ (2*(a));
-			result2 =(-b - Math.Sqrt((b*b) - (4*(a * c))))/ (2*(a));
-			
-			
-			Console.WriteLine("x1 = " + Math.Round(result1,3));
-			Console.WriteLine("x2 = " + Math.Round(result2,3));
-		
-		
-	}
-		
-	
-	}
-
 class Program
 {
     static void Main()
@@ -765,6 +766,7 @@ class Program
         TipCalculator tc = new TipCalculator();
         Statistic stat = new Statistic();
 		Qformula qf = new Qformula();
+        RandomNumberGen rng = new RandomNumberGen();
 
         DateTime now = DateTime.Now;
 
@@ -777,6 +779,7 @@ class Program
         string tool4 = "Sum Tool";
         string tool5 = "Molar Mass Calculator";
         string tool6 = "Element Name Tool";
+        string tool7 = "Random Number Generator";
         
         while(terminate == false)
         //terminate's value only changes in the else if condition where 't' is pressed
@@ -793,6 +796,7 @@ class Program
                 Console.WriteLine("4. {0}", tool4);
                 Console.WriteLine("5. {0}", tool5);
                 Console.WriteLine("6. {0}", tool6);
+                Console.WriteLine("7. {0}", tool7);
                 Console.WriteLine("--------------------------------");
                 Console.WriteLine("Press t to Terminate Program");
                 Console.WriteLine("------------------------------------------------");
@@ -860,6 +864,20 @@ class Program
                     userElement.ChemName();
                     ui.ToolEnd();
                 }
+                else if(uiKey.KeyChar == '7')
+                {
+                    ui.ToolStart(tool7);
+                    Console.WriteLine("Enter Lower Bound.");
+                    Console.WriteLine("");
+                    int RminMain = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
+                    Console.WriteLine("Enter Upper Bound.");
+                    Console.WriteLine("");
+                    int RmaxMain = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
+                    rng.Rando(RminMain, RmaxMain);
+                    ui.ToolEnd();
+                }
                 else if(uiKey.KeyChar == 't')
                 {
                     Console.WriteLine("---Accepted");
@@ -883,5 +901,8 @@ class Program
         Console.WriteLine("---------------------");
         Console.WriteLine("Press Any Key to Exit");
         Console.ReadKey();
+        Console.WriteLine("------------------------------------------------");
+        Console.WriteLine("Session End Date/Time: " + DateTime.Now);
+        Console.WriteLine("------------------------------------------------");
     }
 }
