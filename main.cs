@@ -773,23 +773,27 @@ class Program
         ConsoleKeyInfo uiKey;
         bool keyCheck = false;
         bool terminate = false;
-        string tool1 = "Tip Calculator";
-        string tool2 = "Quadratic Formula";
-        string tool3 = "Mean/Mode/Median Tool";
-        string tool4 = "Sum Tool";
-        string tool5 = "Molar Mass Calculator";
-        string tool6 = "Element Name Tool";
-        string tool7 = "Random Number Generator";
+        string tool1 = "Tip Calculator".PadRight(29);
+        string tool2 = "Quadratic Formula".PadRight(29);
+        string tool3 = "Mean/Mode/Median Tool".PadRight(29);
+        string tool4 = "Sum Tool".PadRight(29);
+        string tool5 = "Molar Mass Calculator".PadRight(29);
+        string tool6 = "Element Name Tool".PadRight(29);
+        string tool7 = "Random Number Generator".PadRight(29);
         
         while(terminate == false)
         //terminate's value only changes in the else if condition where 't' is pressed
         {
             do
             {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("");
                 Console.WriteLine("--------------------------------");
                 Console.WriteLine("Choose the tool you want to use!");
                 Console.WriteLine("--------------------------------");
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1. {0}", tool1);
                 Console.WriteLine("2. {0}", tool2);
                 Console.WriteLine("3. {0}", tool3);
@@ -797,8 +801,11 @@ class Program
                 Console.WriteLine("5. {0}", tool5);
                 Console.WriteLine("6. {0}", tool6);
                 Console.WriteLine("7. {0}", tool7);
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("--------------------------------");
-                Console.WriteLine("Press t to Terminate Program");
+                Console.WriteLine("Press t to Terminate Program    ");
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine("------------------------------------------------");
                 Console.WriteLine("Session Start Date/Time: " + now);
                 Console.WriteLine("------------------------------------------------");
