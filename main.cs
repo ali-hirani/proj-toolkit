@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 class TipCalculator
 {
@@ -65,7 +66,7 @@ class TipCalculator
         while(tipRate < 0 && custTipRate < 0);
         //if its set to any of the 4 rates, or the custRate, it will exit the loop
         
-        if(tipRate > 0)
+        if(tipRate >= 0)
         //for formatting purposes
         {
             Console.WriteLine("---Accepted");
@@ -84,7 +85,7 @@ class TipCalculator
             billParse = Console.ReadLine();
             if(double.TryParse(billParse, out billNum))
             {
-                if(tipRate > 0)
+                if(tipRate >= 0)
                 {
                     tipValue = billNum * tipRate;
                     //tip is evaluated on pretax value
@@ -92,7 +93,7 @@ class TipCalculator
                     //total = tip + bill pretax + tax
                     Console.WriteLine("");
                     Console.WriteLine("You should tip: ${0:f2}", tipValue);
-                    Console.WriteLine("Your total comes to: ${0:f2}", billTotal);
+                    Console.WriteLine("Your total comes to: ${0:f2} including tax.", billTotal);
                 }
                 if(custTipRate > 0)
                 {
@@ -102,7 +103,7 @@ class TipCalculator
                     //total = tip + bill pretax + tax
                     Console.WriteLine("");
                     Console.WriteLine("You should tip: ${0:f2}", tipValue);
-                    Console.WriteLine("Your total comes to: ${0:f2}", billTotal);
+                    Console.WriteLine("Your total comes to: ${0:f2} including tax. ", billTotal);
                 }
             }
             else
@@ -728,6 +729,22 @@ class RandomNumberGen
        //Therefore Rmin = 5, Rmax = 6 can yield 5 or 6
     }
 }
+/*class Timer
+{
+    //public Stopwatch stopwatch = new Stopwatch();
+    ConsoleKeyInfo watchKey;
+    public void StopTimer()
+    {
+        do
+        {
+            stopwatch.Start();
+            Console.Write("\r{0}", stopwatch.Elapsed);
+        }
+        while(watchKey.KeyChar != 's');
+        stopwatch.Stop();
+    }
+*/
+//}
 class UserInterface
 {
 
@@ -769,6 +786,7 @@ class Program
         RandomNumberGen rng = new RandomNumberGen();
 
         DateTime now = DateTime.Now;
+        //Stopwatch stopwatch = new Stopwatch();
 
         ConsoleKeyInfo uiKey;
         bool keyCheck = false;

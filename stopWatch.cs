@@ -6,21 +6,24 @@ class Program
 {
     static void Main()
     {
-	// Create new stopwatch
+	ConsoleKeyInfo watchKey;
 	Stopwatch stopwatch = new Stopwatch();
+	// Create new stopwatch
 
-	// Begin timing
 	stopwatch.Start();
+	// Begin timing
 
 	// Do something
-	for (long i = 0; i < 100000000000000; i++)
+	do
 	{
 	    Console.Write("\r{0}", stopwatch.Elapsed);
 	    //This \r makes it write each timestamp on the beginning of the line
 	    //It appears as if its a dynamic clock but its just printing
 	    //a new time on the same line each time it loops
-	    //Thread.Sleep(1);
+	    Thread.Sleep(1);
+	    Console.ReadKey();
 	}
+	while(watchKey.KeyChar != 's');
 
 	// Stop timing
 	stopwatch.Stop();
