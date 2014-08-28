@@ -57,7 +57,7 @@ class TipCalculator
                 {
                     Console.WriteLine("Please try again");
                     custTipRate = (Double.Parse(Console.ReadLine()))/100; 
-                    
+
                 }     
             }
             else
@@ -796,6 +796,116 @@ class RandomNumberGen
     }
 */
 //}
+class RockPaperScissors
+{
+    public string rpsRan; 
+    public int rpsRando; 
+    public string rpsUser; 
+
+    public void RPS()
+    {
+        Random rpsvariable = new Random(); 
+        rpsRando = rpsvariable.Next(100); 
+
+
+        
+        ConsoleKeyInfo rpsKey; 
+
+
+        if(rpsRando <= 33)
+        {
+            rpsRan = "rock"; 
+        }
+        else if(rpsRando <= 67)
+        {
+            rpsRan = "paper"; 
+        }
+        else
+        {
+            rpsRan = "scissors"; 
+        }
+            Console.WriteLine("Do you choose rock, paper or scissors?");
+            Console.WriteLine("");
+            Console.WriteLine("1. Rock");
+            Console.WriteLine("2. Paper");
+            Console.WriteLine("3. Scissors");
+            Console.WriteLine("");
+        do
+        {
+
+            rpsKey = Console.ReadKey();
+            if(rpsKey.KeyChar == '1')
+            {
+                rpsUser = "rock"; 
+            }
+            else if(rpsKey.KeyChar == '2')
+            {
+                rpsUser = "paper"; 
+
+            }
+            else if(rpsKey.KeyChar == '3')
+            {
+                rpsUser = "scissors"; 
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+        }
+        while(rpsKey.KeyChar != '1' && rpsKey.KeyChar != '2' && rpsKey.KeyChar != '3');
+
+        Console.WriteLine(""); 
+
+        if(rpsUser == "rock" && rpsRan == "scissors" )
+        {
+            Console.WriteLine("Computer Input: Scissors. User Input: Rock");
+            Console.WriteLine("You win!");
+        }
+        else if(rpsUser == "scissors" && rpsRan == "rock")
+        {
+            Console.WriteLine("Computer Input: Rock. User Input: Scissors"); 
+            Console.WriteLine("You lost!");
+        }
+        else if(rpsUser == "paper" && rpsRan == "scissors")
+        {
+            Console.WriteLine("Computer Input: Scissors. User Input: Paper");
+            Console.WriteLine("You lost!");
+        }
+        else if(rpsUser == "scissors" && rpsRan == "paper")
+        {
+            Console.WriteLine("Computer Input: Paper. User Input: Scissors"); 
+            Console.WriteLine("You win!"); 
+        }
+        else if(rpsUser == rpsRan)
+        {
+            Console.WriteLine("It's a draw!"); 
+            if(rpsUser == "scissors")
+            {   
+                Console.WriteLine("Computer Input: Scissors. User Input: Scissors"); 
+            }
+            else if(rpsUser == "paper")
+            {
+                Console.WriteLine("Computer Input: Paper. User Input: Paper"); 
+            }
+            else 
+            {
+                Console.WriteLine("Computer Input: Rock. User Input: Rock"); 
+            }
+            
+        }
+        else if(rpsUser == "rock" && rpsRan == "paper")
+        {
+            Console.WriteLine("Computer Input: Paper. User Input: Rock."); 
+            Console.WriteLine("You lost!"); 
+        }
+        else if(rpsUser == "paper" && rpsRan == "rock")
+        {
+            Console.WriteLine("Computer Input: Rock. User Input: Paper."); 
+            Console.WriteLine("You win!"); 
+        }
+    }
+
+}
 class UserInterface
 {
 
@@ -835,6 +945,7 @@ class Program
         Statistic stat = new Statistic();
 		Qformula qf = new Qformula();
         RandomNumberGen rng = new RandomNumberGen();
+        RockPaperScissors rps = new RockPaperScissors(); 
 
         DateTime now = DateTime.Now;
         //Stopwatch stopwatch = new Stopwatch();
@@ -849,6 +960,7 @@ class Program
         string tool5 = "Molar Mass Calculator".PadRight(29);
         string tool6 = "Element Name Tool".PadRight(29);
         string tool7 = "Random Number Generator".PadRight(29);
+        string tool8 = "Rock Paper Scissors Game".PadRight(29); 
         
         while(terminate == false)
         //terminate's value only changes in the else if condition where 't' is pressed
@@ -870,6 +982,7 @@ class Program
                 Console.WriteLine("5. {0}", tool5);
                 Console.WriteLine("6. {0}", tool6);
                 Console.WriteLine("7. {0}", tool7);
+                Console.WriteLine("8. {0}", tool8); 
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("--------------------------------");
@@ -953,6 +1066,12 @@ class Program
                     Console.WriteLine("");
                     rng.Rando(RminMain, RmaxMain);
                     ui.ToolEnd();
+                }
+                else if(uiKey.KeyChar == '8')
+                {
+                    ui.ToolStart(tool8); 
+                    rps.RPS(); 
+                    ui.ToolEnd(); 
                 }
                 else if(uiKey.KeyChar == 't')
                 {
