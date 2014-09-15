@@ -39,3 +39,6 @@ add to index only files created/modified and not those deleted
 
 2. **git add -u**
 add to index only files deleted/modified and not those created
+
+creating a file called .gitignore
+>git status
