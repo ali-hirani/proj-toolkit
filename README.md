@@ -1,3 +1,5 @@
+Shoutout to Ryan Perry Nguyen for all the assistance in learning the platform as well as advising on the app itself.
+
 proj-toolkit
 ============
 
