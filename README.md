@@ -1,5 +1,3 @@
-Shoutout to Ryan Perry Nguyen for all the assistance in learning the platform as well as advising on the app itself.
-Find his github here: https://github.com/rperryng
 proj-toolkit
 ============
 
@@ -14,6 +12,10 @@ initial import of entire cloud report into local folder
 includes Author, Date and author's comment
 
 **git log --oneline** only includes author comments
+
+**git status**
+
+displays files that were modified and need to pushed
 
 **git pull**
 pulls from cloud repo to local repo
@@ -43,4 +45,3 @@ add to index only files created/modified and not those deleted
 add to index only files deleted/modified and not those created
 
 creating a file called .gitignore
->git status
