@@ -46,8 +46,7 @@ class TipCalculator
             else if(serviceKey.KeyChar == '5')
             {   
                   Console.WriteLine("---Accepted");
-                  Console.WriteLine("Please enter a custom tip amount in percent.");
-                  Console.WriteLine();
+                  Console.Write("Please enter a custom tip amount in percent: ");
                   custTipRate = (Double.Parse(Console.ReadLine()))/100;  
                 while(custTipRate < 0)
                 {
@@ -79,7 +78,7 @@ class TipCalculator
             Console.WriteLine("");
         }
         
-        Console.WriteLine("Enter Pre-tax Bill Value.");    
+        Console.Write("Enter Pre-tax Bill Value: ");    
         do
         {
             Console.WriteLine("");

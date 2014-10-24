@@ -87,18 +87,15 @@ class ProjToolkit
                     double molarMassSum = 0;
                     keyCheck = true;
                     Console.WriteLine("");
-                    Console.WriteLine("How many elements are present in the molecule?");
-                    Console.WriteLine("");
+                    Console.Write("Number of elements present in the molecule: ");
                     int elNum = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
                     for(int i = 1; i <= elNum; i++)
                     {
-                        Console.WriteLine("Input chemical formula for element #{0} in molecule:",i);
-                        Console.WriteLine("");
+                        Console.Write("Input chemical formula for element #{0} in molecule: ",i);
                         Element userElement = new Element(Console.ReadLine());
                         Console.WriteLine("");
-                        Console.WriteLine("Input number of atoms of element #{0} in molecule:",i);
-                        Console.WriteLine("");
+                        Console.Write("Input number of atoms of element #{0} in molecule: ",i);
                         userElement.Atoms = int.Parse(Console.ReadLine());
                         Console.WriteLine("");
                         molarMassSum += userElement.MolarMass();
@@ -110,8 +107,7 @@ class ProjToolkit
                 {
                     ui.ToolStart(tool6);
                     keyCheck = true;
-                    Console.WriteLine("Type in Chemical Formula");
-                    Console.WriteLine("");
+                    Console.Write("Type in Chemical Formula: ");
                     Element userElement= new Element(Console.ReadLine());
                     Console.WriteLine("");
                     Console.Write("Chemical Name: ");
@@ -121,12 +117,10 @@ class ProjToolkit
                 else if(uiKey.KeyChar == '7')
                 {
                     ui.ToolStart(tool7);
-                    Console.WriteLine("Enter Lower Bound.");
-                    Console.WriteLine("");
+                    Console.Write("Enter Lower Bound: ");
                     int RminMain = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
-                    Console.WriteLine("Enter Upper Bound.");
-                    Console.WriteLine("");
+                    Console.Write("Enter Upper Bound: ");
                     int RmaxMain = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
                     rng.Rando(RminMain, RmaxMain);
