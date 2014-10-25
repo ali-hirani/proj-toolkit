@@ -10,7 +10,8 @@ class ProjToolkit
         Statistic stat = new Statistic();
         Qformula qf = new Qformula();
         RandomNumberGen rng = new RandomNumberGen();
-        RockPaperScissors rps = new RockPaperScissors(); 
+        RockPaperScissors rps = new RockPaperScissors();
+        KanyeQuoteGen kanye = new KanyeQuoteGen();
 
         DateTime now = DateTime.Now;
         //Stopwatch stopwatch = new Stopwatch();
@@ -25,7 +26,8 @@ class ProjToolkit
         string tool5 = "Molar Mass Calculator".PadRight(29);
         string tool6 = "Element Name Tool".PadRight(29);
         string tool7 = "Random Number Generator".PadRight(29);
-        string tool8 = "Rock Paper Scissors Game".PadRight(29); 
+        string tool8 = "Rock Paper Scissors Game".PadRight(29);
+        string tool9 = "Kanye West Quote Generator".PadRight(29);
         
         while(terminate == false)
         //terminate's value only changes in the else if condition where 't' is pressed
@@ -47,7 +49,8 @@ class ProjToolkit
                 Console.WriteLine("5. {0}", tool5);
                 Console.WriteLine("6. {0}", tool6);
                 Console.WriteLine("7. {0}", tool7);
-                Console.WriteLine("8. {0}", tool8); 
+                Console.WriteLine("8. {0}", tool8);
+                Console.WriteLine("9. {0}", tool9);
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("--------------------------------");
@@ -131,6 +134,12 @@ class ProjToolkit
                     ui.ToolStart(tool8); 
                     rps.RPS(); 
                     ui.ToolEnd(); 
+                }
+                else if(uiKey.KeyChar == '9')
+                {
+                    ui.ToolStart(tool9);
+                    kanye.QuoteGenerate();
+                    ui.ToolEnd();
                 }
                 else if(uiKey.KeyChar == 't')
                 {

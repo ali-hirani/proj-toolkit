@@ -1,1 +1,1 @@
-csc element.cs qformula.cs randomNumberGen.cs rockPaperScissors.cs statistic.cs tipCalculator.cs userInterface.cs projToolkit.cs
+csc element.cs qformula.cs randomNumberGen.cs rockPaperScissors.cs statistic.cs tipCalculator.cs userInterface.cs kanyeQuoteGen.cs projToolkit.cs
